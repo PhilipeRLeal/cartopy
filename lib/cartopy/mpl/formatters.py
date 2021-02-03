@@ -356,9 +356,9 @@ class Gridline_Base():
 
         self.LONGITUDE_FORMATTER.west_hemisphere_str = west_hemisphere_str
         self.LONGITUDE_FORMATTER.east_hemisphere_str = east_hemisphere_str
-        
+
         self.xformatter = self.LONGITUDE_FORMATTER
-        
+
     def set_latitude_hemisphere_str(self,
                                     north_hemisphere_str='N',
                                     south_hemisphere_str='S'

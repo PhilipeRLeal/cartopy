@@ -112,7 +112,6 @@ def test_gridliner():
                         top=1 - delta, bottom=0 + delta)
 
 
-
 def test_gridliner_specified_lines():
     meridians = [0, 60, 120, 180, 240, 360]
     parallels = [-90, -60, -30, 0, 30, 60, 90]
@@ -390,6 +389,7 @@ def test_gridliner_line_limits():
     for path in paths:
         assert (np.min(path.vertices, axis=0) >= (xlim[0], ylim[0])).all()
         assert (np.max(path.vertices, axis=0) <= (xlim[1], ylim[1])).all()
+
 
 @pytest.mark.natural_earth
 @ImageTesting(['gridline_with_Max_ticknumbers'], tolerance=grid_label_tol)

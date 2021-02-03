@@ -14,18 +14,23 @@ import matplotlib.transforms as mtrans
 import matplotlib.path as mpath
 import numpy as np
 import shapely.geometry as sgeom
-
 import cartopy
 from cartopy.crs import Projection, _RectangularProjection
-from cartopy.mpl.ticker import (
-    LongitudeLocator, LatitudeLocator,
-    LongitudeFormatter, LatitudeFormatter)
+
+from cartopy.mpl.ticker import (LongitudeLocator,
+                                LatitudeLocator,
+                                LongitudeFormatter,
+                                LatitudeFormatter)
+
+from cartopy.mpl.formatters import Gridline_Base
+
 
 degree_locator = mticker.MaxNLocator(nbins=9, steps=[1, 1.5, 1.8, 2, 3, 6, 10])
 classic_locator = mticker.MaxNLocator(nbins=9)
 classic_formatter = mticker.ScalarFormatter
 
 _DEGREE_SYMBOL = '\u00B0'
+
 _X_INLINE_PROJS = (
     cartopy.crs.InterruptedGoodeHomolosine,
     cartopy.crs.LambertConformal,
@@ -43,7 +48,6 @@ _POLAR_PROJS = (
 def _fix_lons(lons):
     """
     Fix the given longitudes into the range ``[-180, 180]``.
-
     """
     lons = np.array(lons, copy=False, ndmin=1)
     fixed_lons = ((lons + 180) % 360) - 180
@@ -97,7 +101,7 @@ LATITUDE_FORMATTER = mticker.FuncFormatter(lambda v, pos:
                                            _north_south_formatted(v))
 
 
-class Gridliner:
+class Gridliner(Gridline_Base):
     # NOTE: In future, one of these objects will be add-able to a GeoAxes (and
     # maybe even a plain old mpl axes) and it will call the "_draw_gridliner"
     # method on draw. This will enable automatic gridline resolution
@@ -176,6 +180,9 @@ class Gridliner:
         used for the map, meridians and parallels can cross both the X axis and
         the Y axis.
         """
+
+        Gridline_Base.__init__(self)
+
         self.axes = axes
 
         #: The :class:`~matplotlib.ticker.Locator` to use for the x
@@ -393,7 +400,7 @@ class Gridliner:
     def _round(x, base=5):
         if np.isnan(base):
             base = 5
-        return int(base * round(x / base))
+        return int(base * round(float(x) / base))
 
     def _find_midpoints(self, lim, ticks):
         # Find the center point between each lat gridline.
@@ -429,13 +436,12 @@ class Gridliner:
         # Get nice ticks within crs domain
         lon_ticks = self.xlocator.tick_values(lon_lim[0], lon_lim[1])
         lat_ticks = self.ylocator.tick_values(lat_lim[0], lat_lim[1])
-
-        inf = max(lon_lim[0], crs.x_limits[0])
-        sup = min(lon_lim[1], crs.x_limits[1])
-        lon_ticks = [value for value in lon_ticks if inf <= value <= sup]
-        inf = max(lat_lim[0], crs.y_limits[0])
-        sup = min(lat_lim[1], crs.y_limits[1])
-        lat_ticks = [value for value in lat_ticks if inf <= value <= sup]
+        lon_ticks = [value for value in lon_ticks
+                     if value >= max(lon_lim[0], crs.x_limits[0]) and
+                     value <= min(lon_lim[1], crs.x_limits[1])]
+        lat_ticks = [value for value in lat_ticks
+                     if value >= max(lat_lim[0], crs.y_limits[0]) and
+                     value <= min(lat_lim[1], crs.y_limits[1])]
 
         #####################
         # Gridlines drawing #

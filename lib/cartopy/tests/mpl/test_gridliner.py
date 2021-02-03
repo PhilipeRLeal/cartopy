@@ -391,7 +391,8 @@ def test_gridliner_line_limits():
         assert (np.min(path.vertices, axis=0) >= (xlim[0], ylim[0])).all()
         assert (np.max(path.vertices, axis=0) <= (xlim[1], ylim[1])).all()
 
-
+@pytest.mark.natural_earth
+@ImageTesting(['gridline_with_Max_ticknumbers'], tolerance=grid_label_tol)
 def test_gridliner_set_number_of_ticks():
     plt.figure()
     ax = plt.subplot(1, 1, 1, projection=ccrs.NorthPolarStereo())
@@ -418,7 +419,7 @@ def test_gridliner_set_number_of_ticks():
 def test_gridliner_change_gridline_tick_decimal_separator():
     plt.figure()
     ax = plt.subplot(1, 1, 1, projection=ccrs.PlateCarree())
-    ax.set_global()
+    ax.stock_img()
     ax.set_extent([-80, -40.0, 10.0, -30.0])
     gl = ax.gridlines(draw_labels=True)
     try:
@@ -441,12 +442,12 @@ def test_gridliner_change_gridline_tick_decimal_separator():
 def test_gridliner_hemisphere_ticklabels_formatting():
     plt.figure()
     ax = plt.subplot(1, 1, 1, projection=ccrs.PlateCarree())
-    ax.set_global()
+    ax.stock_img()
     ax.set_extent([-80, -40.0, 10.0, -30.0])
     gl = ax.gridlines(draw_labels=True)
     try:
-        gl.set_longitude_hemisphere_str(west_hemisphere_str='W',
-                                        east_hemisphere_str='E')
+        gl.set_longitude_hemisphere_str(west_hemisphere_str='O',
+                                        east_hemisphere_str='L')
 
         gl.set_latitude_hemisphere_str(north_hemisphere_str='N',
                                        south_hemisphere_str='S')

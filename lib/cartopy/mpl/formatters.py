@@ -171,7 +171,7 @@ class BASE_CLASS_FORMATER():
             return String
 
         else:
-            coords = '{}'.format(self.gl_num_format).format(latitude)
+            coords = '{}'.format(self.gl_num_format).format(abs(latitude))
 
             coord_info = (u'{degree}{hemisphere}'
                           .format(degree=self._DEGREE_SYMBOL,
@@ -184,7 +184,7 @@ class BASE_CLASS_FORMATER():
 
     def _east_west_formatted(self, longitude):
 
-        lon_hemisphere = self._lat_hemisphere(longitude)
+        lon_hemisphere = self._lon_hemisphere(longitude)
         num_format = self.gl_num_format
 
         if self.gl_num_format == 'g':
@@ -197,7 +197,7 @@ class BASE_CLASS_FORMATER():
                                            degree=self._DEGREE_SYMBOL)
         else:
 
-            coords = '{}'.format(self.gl_num_format).format(longitude)
+            coords = '{}'.format(self.gl_num_format).format(abs(longitude))
 
             coord_info = (u'{degree}{hemisphere}'
                           .format(degree=self._DEGREE_SYMBOL,
@@ -354,13 +354,16 @@ class Gridline_Base():
                                      east_hemisphere_str='E'
                                      ):
 
-        self.xformatter.west_hemisphere_str = west_hemisphere_str
-        self.xformatter.east_hemisphere_str = east_hemisphere_str
-
+        self.LONGITUDE_FORMATTER.west_hemisphere_str = west_hemisphere_str
+        self.LONGITUDE_FORMATTER.east_hemisphere_str = east_hemisphere_str
+        
+        self.xformatter = self.LONGITUDE_FORMATTER
+        
     def set_latitude_hemisphere_str(self,
                                     north_hemisphere_str='N',
                                     south_hemisphere_str='S'
                                     ):
 
-        self.yformatter.north_hemisphere_str = north_hemisphere_str
-        self.yformatter.south_hemisphere_str = south_hemisphere_str
+        self.LATITUDE_FORMATTER.north_hemisphere_str = north_hemisphere_str
+        self.LATITUDE_FORMATTER.south_hemisphere_str = south_hemisphere_str
+        self.yformatter = self.LATITUDE_FORMATTER

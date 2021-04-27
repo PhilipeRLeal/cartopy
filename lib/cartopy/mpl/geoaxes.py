@@ -514,7 +514,7 @@ class GeoAxes(matplotlib.axes.Axes):
                             **factory_kwargs)
         self._done_img_factory = True
 
-        return matplotlib.axes.Axes.draw(self, renderer=renderer, **kwargs)
+        return matplotlib.axes.Axes.draw(self, renderer=renderer)
 
     def _update_title_position(self, renderer):
         matplotlib.axes.Axes._update_title_position(self, renderer)

@@ -397,7 +397,9 @@ def test_gridliner_line_limits():
         assert (np.max(path.vertices, axis=0) <= (xlim[1], ylim[1])).all()
 
 
-def test_gridliner_set_number_of_ticks():
+@pytest.mark.natural_earth
+@ImageTesting(['gridline_with_Max_ticknumbers'], tolerance=grid_label_tol)
+def test_gridliner_set_number_of_ticks1():
     plt.figure()
     ax = plt.subplot(1, 1, 1, projection=ccrs.NorthPolarStereo())
     ax.set_global()
@@ -408,6 +410,29 @@ def test_gridliner_set_number_of_ticks():
         gl.set_number_of_ticks(6, 'xlocator')
 
         gl.set_number_of_ticks(4, 'ylocator')
+        
+        Result = True
+        
+    except BaseException as e:
+        print(e)
+        Result = False
+
+    assert(Result)
+
+@pytest.mark.natural_earth
+@ImageTesting(['gridline_with_Max_ticknumbers'], tolerance=grid_label_tol)
+def test_gridliner_set_number_of_ticks2():
+    plt.figure()
+    ax = plt.subplot(1, 1, 1,
+                     projection=ccrs.PlateCarree())
+    ax.stock_img()
+    ax.set_extent([-80, -40.0, 10.0, -30.0])
+
+    gl = ax.gridlines(draw_labels=True)
+    try:
+        gl.set_number_of_ticks(6, 'xlocator')
+
+        gl.set_number_of_ticks(10, 'ylocator')
 
         Result = True
     except BaseException as e:
@@ -418,12 +443,20 @@ def test_gridliner_set_number_of_ticks():
 
 
 @pytest.mark.natural_earth
+<<<<<<< HEAD
 @ImageTesting(['gridliner_ticklabels_decimals_formatted'],
+=======
+@ImageTesting(['gridliner_hemisphere_ticklabels_formatted'],
+>>>>>>> c6d7d43a05271bc4043ac3dc1fd4a18598b27276
               tolerance=0.7 if ccrs.PROJ4_VERSION >= (6, 0, 0) else 0.5)
 def test_gridliner_change_gridline_tick_decimal_separator():
     plt.figure()
     ax = plt.subplot(1, 1, 1, projection=ccrs.PlateCarree())
+<<<<<<< HEAD
     ax.set_global()
+=======
+    ax.stock_img()
+>>>>>>> c6d7d43a05271bc4043ac3dc1fd4a18598b27276
     ax.set_extent([-80, -40.0, 10.0, -30.0])
     gl = ax.gridlines(draw_labels=True)
     try:
@@ -434,13 +467,18 @@ def test_gridliner_change_gridline_tick_decimal_separator():
 
         Result = True
     except BaseException as e:
+<<<<<<< HEAD
         print(e)
+=======
+        print(e, '\n' * 4)
+>>>>>>> c6d7d43a05271bc4043ac3dc1fd4a18598b27276
         Result = False
 
     assert(Result)
 
 
 @pytest.mark.natural_earth
+<<<<<<< HEAD
 @ImageTesting(['gridliner_hemisphere_ticklabels_formatted'],
               tolerance=0.7 if ccrs.PROJ4_VERSION >= (6, 0, 0) else 0.5)
 def test_gridliner_hemisphere_ticklabels_formatting():
@@ -459,6 +497,67 @@ def test_gridliner_hemisphere_ticklabels_formatting():
         Result = True
     except BaseException as e:
         print(e)
+=======
+@ImageTesting(['gridliner_hemisphere_ticklabels_formatted1'],
+              tolerance=0.7 if ccrs.PROJ4_VERSION >= (6, 0, 0) else 0.5)
+def test_gridliner_hemisphere_ticklabels_formatting1():
+    plt.figure()
+    ax = plt.subplot(1, 1, 1, projection=ccrs.PlateCarree())
+    ax.stock_img()
+    ax.set_extent([-80, -40.0, 10.0, -30.0])
+    gl = ax.gridlines(draw_labels=True)
+    try:
+        CardDir = {'right': 'East',
+                   'left': 'West',
+                   'top': 'North',
+                   'bot': 'South'}
+
+        gl.set_cardinal_directions(CardDir)
+
+        Result = True
+    except BaseException as e:
+        print(e, '\n' * 4)
+        Result = False
+
+    assert(Result)
+
+
+@pytest.mark.natural_earth
+@ImageTesting(['gridliner_hemisphere_ticklabels_formatted2'],
+              tolerance=0.7 if ccrs.PROJ4_VERSION >= (6, 0, 0) else 0.5)
+def test_gridliner_hemisphere_ticklabels_formatting2():
+    plt.figure()
+    ax = plt.subplot(1, 1, 1, projection=ccrs.PlateCarree())
+    ax.stock_img()
+    ax.set_extent([-80, -40.0, 10.0, -30.0])
+    gl = ax.gridlines(draw_labels=True)
+    try:
+        gl.set_cardinal_directions(['East', 'West', 'North', 'South'])
+
+        Result = True
+    except BaseException as e:
+        print(e, '\n' * 4)
+        Result = False
+
+    assert(Result)
+
+
+@pytest.mark.natural_earth
+@ImageTesting(['gridliner_hemisphere_ticklabels_formatted3'],
+              tolerance=0.7 if ccrs.PROJ4_VERSION >= (6, 0, 0) else 0.5)
+def test_gridliner_hemisphere_ticklabels_formatting3():
+    plt.figure()
+    ax = plt.subplot(1, 1, 1, projection=ccrs.PlateCarree())
+    ax.stock_img()
+    ax.set_extent([-80, -40.0, 10.0, -30.0])
+    gl = ax.gridlines(draw_labels=True)
+    try:
+        gl.set_cardinal_directions("LONS")
+
+        Result = True
+    except BaseException as e:
+        print(e, '\n' * 4)
+>>>>>>> c6d7d43a05271bc4043ac3dc1fd4a18598b27276
         Result = False
 
     assert(Result)

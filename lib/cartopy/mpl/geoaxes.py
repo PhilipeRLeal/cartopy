@@ -1375,8 +1375,9 @@ class GeoAxes(matplotlib.axes.Axes):
                   xlocs=None, ylocs=None, dms=False,
                   x_inline=None, y_inline=None, auto_inline=True,
                   xformatter=None, yformatter=None, xlim=None, ylim=None,
-                  **kwargs,
-                  **geoaxes_kwargs):
+                  geoaxes_kwargs={},
+                  **kwargs
+                  ):
         """
         Automatically add gridlines to the axes, in the given coordinate
         system, at draw time.

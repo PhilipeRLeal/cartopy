@@ -1375,7 +1375,8 @@ class GeoAxes(matplotlib.axes.Axes):
                   xlocs=None, ylocs=None, dms=False,
                   x_inline=None, y_inline=None, auto_inline=True,
                   xformatter=None, yformatter=None, xlim=None, ylim=None,
-                  **kwargs):
+                  **kwargs,
+                  **geoaxes_kwargs):
         """
         Automatically add gridlines to the axes, in the given coordinate
         system, at draw time.
@@ -1440,6 +1441,10 @@ class GeoAxes(matplotlib.axes.Axes):
         **kwargs
             All other keywords control line properties.  These are passed
             through to :class:`matplotlib.collections.Collection`.
+        **geoaxes_kwargs
+            All geoaxes_kwargs will be passed to the Geoaxes instance.
+            See gridliner.py and formatters.py for more details on these
+            other geoaxes_kwarg parameters.
 
         Returns
         -------
@@ -1464,7 +1469,8 @@ class GeoAxes(matplotlib.axes.Axes):
             self, crs=crs, draw_labels=draw_labels, xlocator=xlocs,
             ylocator=ylocs, collection_kwargs=kwargs, dms=dms,
             x_inline=x_inline, y_inline=y_inline, auto_inline=auto_inline,
-            xformatter=xformatter, yformatter=yformatter, xlim=xlim, ylim=ylim)
+            xformatter=xformatter, yformatter=yformatter, xlim=xlim, ylim=ylim,
+            **geoaxes_kwargs)
         self._gridliners.append(gl)
         return gl
 

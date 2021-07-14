@@ -320,14 +320,22 @@ def test_pcolormesh_global_with_wrap1():
     data = data[:-1, :-1]
 
     ax = plt.subplot(211, projection=ccrs.PlateCarree())
+<<<<<<< HEAD
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
                    snap=False)
+=======
+    plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree())
+>>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
     ax.set_global()  # make sure everything is visible
 
     ax = plt.subplot(212, projection=ccrs.PlateCarree(180))
+<<<<<<< HEAD
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
                    snap=False)
+=======
+    plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree())
+>>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
     ax.set_global()  # make sure everything is visible
 
@@ -398,14 +406,22 @@ def test_pcolormesh_global_with_wrap2():
     data = data[:-1, :-1]
 
     ax = plt.subplot(211, projection=ccrs.PlateCarree())
+<<<<<<< HEAD
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
                    snap=False)
+=======
+    plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree())
+>>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
     ax.set_global()  # make sure everything is visible
 
     ax = plt.subplot(212, projection=ccrs.PlateCarree(180))
+<<<<<<< HEAD
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
                    snap=False)
+=======
+    plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree())
+>>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
     ax.set_global()  # make sure everything is visible
 
@@ -437,8 +453,12 @@ def test_pcolormesh_global_with_wrap3():
     data = np.ma.masked_greater(data, 2.6)
 
     ax = plt.subplot(311, projection=ccrs.PlateCarree(-45))
+<<<<<<< HEAD
     c = plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
                        snap=False)
+=======
+    c = plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree())
+>>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
     assert c._wrapped_collection_fix is not None, \
         'No pcolormesh wrapping was done when it should have been.'
 
@@ -446,14 +466,22 @@ def test_pcolormesh_global_with_wrap3():
     ax.set_global()  # make sure everything is visible
 
     ax = plt.subplot(312, projection=ccrs.PlateCarree(-1.87499952))
+<<<<<<< HEAD
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
                    snap=False)
+=======
+    plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree())
+>>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
     ax.set_global()  # make sure everything is visible
 
     ax = plt.subplot(313, projection=ccrs.Robinson(-2))
+<<<<<<< HEAD
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
                    snap=False)
+=======
+    plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree())
+>>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
     ax.set_global()  # make sure everything is visible
 
@@ -484,8 +512,12 @@ def test_pcolormesh_set_array_with_mask():
 
     ax = plt.subplot(311, projection=ccrs.PlateCarree(-45))
     c = plt.pcolormesh(xbnds, ybnds, bad_data,
+<<<<<<< HEAD
                        norm=norm, transform=ccrs.PlateCarree(),
                        snap=False)
+=======
+                       norm=norm, transform=ccrs.PlateCarree())
+>>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
     c.set_array(data.ravel())
     assert c._wrapped_collection_fix is not None, \
         'No pcolormesh wrapping was done when it should have been.'
@@ -495,15 +527,23 @@ def test_pcolormesh_set_array_with_mask():
 
     ax = plt.subplot(312, projection=ccrs.PlateCarree(-1.87499952))
     c2 = plt.pcolormesh(xbnds, ybnds, bad_data_mask,
+<<<<<<< HEAD
                         norm=norm, transform=ccrs.PlateCarree(),
                         snap=False)
+=======
+                        norm=norm, transform=ccrs.PlateCarree())
+>>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
     c2.set_array(data.ravel())
     ax.coastlines()
     ax.set_global()  # make sure everything is visible
 
     ax = plt.subplot(313, projection=ccrs.Robinson(-2))
+<<<<<<< HEAD
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
                    snap=False)
+=======
+    plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree())
+>>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
     ax.set_global()  # make sure everything is visible
 
@@ -532,7 +572,11 @@ def test_pcolormesh_set_clim_with_mask():
 
     ax = plt.subplot(311, projection=ccrs.PlateCarree(-45))
     c = plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
+<<<<<<< HEAD
                        norm=bad_initial_norm, snap=False)
+=======
+                       norm=bad_initial_norm)
+>>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
     assert c._wrapped_collection_fix is not None, \
         'No pcolormesh wrapping was done when it should have been.'
 
@@ -540,14 +584,22 @@ def test_pcolormesh_set_clim_with_mask():
     ax.set_global()  # make sure everything is visible
 
     ax = plt.subplot(312, projection=ccrs.PlateCarree(-1.87499952))
+<<<<<<< HEAD
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
                    snap=False)
+=======
+    plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree())
+>>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
     ax.set_global()  # make sure everything is visible
 
     ax = plt.subplot(313, projection=ccrs.Robinson(-2))
+<<<<<<< HEAD
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
                    snap=False)
+=======
+    plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree())
+>>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
     ax.set_global()  # make sure everything is visible
 
@@ -572,6 +624,7 @@ def test_pcolormesh_limited_area_wrap():
     plt.figure(figsize=(10, 6))
 
     ax = plt.subplot(221, projection=ccrs.PlateCarree())
+<<<<<<< HEAD
     plt.pcolormesh(xbnds, ybnds, data, transform=rp, cmap='Spectral',
                    snap=False)
     ax.coastlines()
@@ -579,6 +632,13 @@ def test_pcolormesh_limited_area_wrap():
     ax = plt.subplot(222, projection=ccrs.PlateCarree(180))
     plt.pcolormesh(xbnds, ybnds, data, transform=rp, cmap='Spectral',
                    snap=False)
+=======
+    plt.pcolormesh(xbnds, ybnds, data, transform=rp, cmap='Spectral')
+    ax.coastlines()
+
+    ax = plt.subplot(222, projection=ccrs.PlateCarree(180))
+    plt.pcolormesh(xbnds, ybnds, data, transform=rp, cmap='Spectral')
+>>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
     ax.set_global()
 
@@ -586,14 +646,22 @@ def test_pcolormesh_limited_area_wrap():
     # of the coordinates (just to test that 1d and 2d are both suitably
     # being fixed)
     ax = plt.subplot(223, projection=ccrs.PlateCarree())
+<<<<<<< HEAD
     plt.pcolormesh(x, y, data, transform=rp, cmap='Spectral',
                    snap=False)
+=======
+    plt.pcolormesh(x, y, data, transform=rp, cmap='Spectral')
+>>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
     ax.set_extent([-70, 0, 0, 80])
 
     ax = plt.subplot(224, projection=rp)
+<<<<<<< HEAD
     plt.pcolormesh(xbnds, ybnds, data, transform=rp, cmap='Spectral',
                    snap=False)
+=======
+    plt.pcolormesh(xbnds, ybnds, data, transform=rp, cmap='Spectral')
+>>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
 
 
@@ -659,7 +727,11 @@ def test_pcolormesh_mercator_wrap():
     Z = Z[:-1, :-1]
     ax = plt.axes(projection=ccrs.Mercator())
     ax.coastlines()
+<<<<<<< HEAD
     ax.pcolormesh(x, y, Z, transform=ccrs.PlateCarree(), snap=False)
+=======
+    ax.pcolormesh(x, y, Z, transform=ccrs.PlateCarree())
+>>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
 
 
 @pytest.mark.natural_earth
@@ -675,7 +747,11 @@ def test_pcolormesh_wrap_set_array():
     ax.coastlines()
     # Start off with bad data
     coll = ax.pcolormesh(x, y, np.ones(Z.shape), norm=norm,
+<<<<<<< HEAD
                          transform=ccrs.PlateCarree(), snap=False)
+=======
+                         transform=ccrs.PlateCarree())
+>>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
     # Now update the plot with the set_array method
     coll.set_array(Z.ravel())
 

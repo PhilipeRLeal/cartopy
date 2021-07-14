@@ -1372,7 +1372,6 @@ class GeoAxes(matplotlib.axes.Axes):
                   offset_angle=25, auto_update=False,
                   geoaxes_kwargs={},
                   **kwargs):
-
         """
         Automatically add gridlines to the axes, in the given coordinate
         system, at draw time.
@@ -1520,7 +1519,6 @@ class GeoAxes(matplotlib.axes.Axes):
             xpadding=xpadding, ypadding=ypadding, offset_angle=offset_angle,
             auto_update=auto_update,
             **geoaxes_kwargs)
-
 
         self._gridliners.append(gl)
         return gl

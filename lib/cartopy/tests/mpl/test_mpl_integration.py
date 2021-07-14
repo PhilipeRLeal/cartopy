@@ -153,7 +153,7 @@ def test_global_hexbin_wrap_transform():
     ax.coastlines(zorder=2)
     x, y = np.meshgrid(np.arange(0, 360), np.arange(-90, 91))
     # wrap values so to match x values from test_global_hexbin_wrap
-    x_wrap = np.where(x >= 180, x-360, x)
+    x_wrap = np.where(x >= 180, x - 360, x)
     data = np.sin(np.sqrt(x_wrap**2 + y**2))
     plt.hexbin(
         x.flatten(),
@@ -320,22 +320,24 @@ def test_pcolormesh_global_with_wrap1():
     data = data[:-1, :-1]
 
     ax = plt.subplot(211, projection=ccrs.PlateCarree())
-<<<<<<< HEAD
+
+
+<< << << < HEAD
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
                    snap=False)
-=======
+== == == =
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree())
->>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
+>>>>>> > 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
     ax.set_global()  # make sure everything is visible
 
     ax = plt.subplot(212, projection=ccrs.PlateCarree(180))
-<<<<<<< HEAD
+<< << << < HEAD
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
                    snap=False)
-=======
+== == == =
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree())
->>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
+>>>>>> > 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
     ax.set_global()  # make sure everything is visible
 
@@ -406,22 +408,24 @@ def test_pcolormesh_global_with_wrap2():
     data = data[:-1, :-1]
 
     ax = plt.subplot(211, projection=ccrs.PlateCarree())
-<<<<<<< HEAD
+
+
+<< << << < HEAD
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
                    snap=False)
-=======
+== == == =
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree())
->>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
+>>>>>> > 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
     ax.set_global()  # make sure everything is visible
 
     ax = plt.subplot(212, projection=ccrs.PlateCarree(180))
-<<<<<<< HEAD
+<< << << < HEAD
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
                    snap=False)
-=======
+== == == =
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree())
->>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
+>>>>>> > 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
     ax.set_global()  # make sure everything is visible
 
@@ -453,12 +457,14 @@ def test_pcolormesh_global_with_wrap3():
     data = np.ma.masked_greater(data, 2.6)
 
     ax = plt.subplot(311, projection=ccrs.PlateCarree(-45))
-<<<<<<< HEAD
+
+
+<< << << < HEAD
     c = plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
                        snap=False)
-=======
+== == == =
     c = plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree())
->>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
+>>>>>> > 3249c3ff... test_mpl_integration module has been reinserted in this commit
     assert c._wrapped_collection_fix is not None, \
         'No pcolormesh wrapping was done when it should have been.'
 
@@ -466,22 +472,22 @@ def test_pcolormesh_global_with_wrap3():
     ax.set_global()  # make sure everything is visible
 
     ax = plt.subplot(312, projection=ccrs.PlateCarree(-1.87499952))
-<<<<<<< HEAD
+<< << << < HEAD
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
                    snap=False)
-=======
+== == == =
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree())
->>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
+>>>>>> > 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
     ax.set_global()  # make sure everything is visible
 
     ax = plt.subplot(313, projection=ccrs.Robinson(-2))
-<<<<<<< HEAD
+<< << << < HEAD
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
                    snap=False)
-=======
+== == == =
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree())
->>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
+>>>>>> > 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
     ax.set_global()  # make sure everything is visible
 
@@ -512,94 +518,96 @@ def test_pcolormesh_set_array_with_mask():
 
     ax = plt.subplot(311, projection=ccrs.PlateCarree(-45))
     c = plt.pcolormesh(xbnds, ybnds, bad_data,
-<<<<<<< HEAD
+<< << << < HEAD
                        norm=norm, transform=ccrs.PlateCarree(),
                        snap=False)
-=======
-                       norm=norm, transform=ccrs.PlateCarree())
->>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
+
+
+== == == =
+                       norm = norm, transform = ccrs.PlateCarree())
+>> >>>> > 3249c3ff... test_mpl_integration module has been reinserted in this commit
     c.set_array(data.ravel())
-    assert c._wrapped_collection_fix is not None, \
+    assert c._wrapped_collection_fix is not None,
         'No pcolormesh wrapping was done when it should have been.'
 
     ax.coastlines()
     ax.set_global()  # make sure everything is visible
 
-    ax = plt.subplot(312, projection=ccrs.PlateCarree(-1.87499952))
-    c2 = plt.pcolormesh(xbnds, ybnds, bad_data_mask,
-<<<<<<< HEAD
-                        norm=norm, transform=ccrs.PlateCarree(),
-                        snap=False)
-=======
+    ax=plt.subplot(312, projection = ccrs.PlateCarree(-1.87499952))
+    c2=plt.pcolormesh(xbnds, ybnds, bad_data_mask,
+<< << << < HEAD
+                        norm = norm, transform = ccrs.PlateCarree(),
+                        snap = False)
+== == == =
                         norm=norm, transform=ccrs.PlateCarree())
->>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
+>> >>>> > 3249c3ff... test_mpl_integration module has been reinserted in this commit
     c2.set_array(data.ravel())
     ax.coastlines()
     ax.set_global()  # make sure everything is visible
 
-    ax = plt.subplot(313, projection=ccrs.Robinson(-2))
-<<<<<<< HEAD
+    ax=plt.subplot(313, projection=ccrs.Robinson(-2))
+<< << << < HEAD
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
                    snap=False)
-=======
+== == == =
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree())
->>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
+>> >>>> > 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
     ax.set_global()  # make sure everything is visible
 
 
-@pytest.mark.natural_earth
-@ImageTesting(['pcolormesh_global_wrap3'], tolerance=tolerance)
+@ pytest.mark.natural_earth
+@ ImageTesting(['pcolormesh_global_wrap3'], tolerance=tolerance)
 def test_pcolormesh_set_clim_with_mask():
     """Testing that set_clim works with masked arrays properly."""
-    nx, ny = 33, 17
-    xbnds = np.linspace(-1.875, 358.125, nx, endpoint=True)
-    ybnds = np.linspace(91.25, -91.25, ny, endpoint=True)
-    xbnds, ybnds = np.meshgrid(xbnds, ybnds)
+    nx, ny=33, 17
+    xbnds=np.linspace(-1.875, 358.125, nx, endpoint=True)
+    ybnds=np.linspace(91.25, -91.25, ny, endpoint=True)
+    xbnds, ybnds=np.meshgrid(xbnds, ybnds)
 
-    data = np.exp(np.sin(np.deg2rad(xbnds)) + np.cos(np.deg2rad(ybnds)))
+    data=np.exp(np.sin(np.deg2rad(xbnds)) + np.cos(np.deg2rad(ybnds)))
 
     # this step is not necessary, but makes the plot even harder to do (i.e.
     # it really puts cartopy through its paces)
-    ybnds = np.append(ybnds, ybnds[:, 1:2], axis=1)
-    xbnds = np.append(xbnds, xbnds[:, 1:2] + 360, axis=1)
-    data = np.ma.concatenate([data, data[:, 0:1]], axis=1)
+    ybnds=np.append(ybnds, ybnds[:, 1:2], axis=1)
+    xbnds=np.append(xbnds, xbnds[:, 1:2] + 360, axis=1)
+    data=np.ma.concatenate([data, data[:, 0:1]], axis=1)
 
-    data = data[:-1, :-1]
-    data = np.ma.masked_greater(data, 2.6)
+    data=data[:-1, :-1]
+    data=np.ma.masked_greater(data, 2.6)
 
-    bad_initial_norm = plt.Normalize(-100, 100)
+    bad_initial_norm=plt.Normalize(-100, 100)
 
-    ax = plt.subplot(311, projection=ccrs.PlateCarree(-45))
-    c = plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
-<<<<<<< HEAD
+    ax=plt.subplot(311, projection=ccrs.PlateCarree(-45))
+    c=plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
+<< << << < HEAD
                        norm=bad_initial_norm, snap=False)
-=======
+== == == =
                        norm=bad_initial_norm)
->>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
+>> >>>> > 3249c3ff... test_mpl_integration module has been reinserted in this commit
     assert c._wrapped_collection_fix is not None, \
         'No pcolormesh wrapping was done when it should have been.'
 
     ax.coastlines()
     ax.set_global()  # make sure everything is visible
 
-    ax = plt.subplot(312, projection=ccrs.PlateCarree(-1.87499952))
-<<<<<<< HEAD
+    ax=plt.subplot(312, projection=ccrs.PlateCarree(-1.87499952))
+<< << << < HEAD
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
                    snap=False)
-=======
+== == == =
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree())
->>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
+>> >>>> > 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
     ax.set_global()  # make sure everything is visible
 
-    ax = plt.subplot(313, projection=ccrs.Robinson(-2))
-<<<<<<< HEAD
+    ax=plt.subplot(313, projection=ccrs.Robinson(-2))
+<< << << < HEAD
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree(),
                    snap=False)
-=======
+== == == =
     plt.pcolormesh(xbnds, ybnds, data, transform=ccrs.PlateCarree())
->>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
+>> >>>> > 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
     ax.set_global()  # make sure everything is visible
 
@@ -607,82 +615,82 @@ def test_pcolormesh_set_clim_with_mask():
     c.set_clim(data.min(), data.max())
 
 
-@pytest.mark.natural_earth
-@ImageTesting(['pcolormesh_limited_area_wrap'], tolerance=1.82)
+@ pytest.mark.natural_earth
+@ ImageTesting(['pcolormesh_limited_area_wrap'], tolerance=1.82)
 def test_pcolormesh_limited_area_wrap():
     # make up some realistic data with bounds (such as data from the UM's North
     # Atlantic Europe model)
-    nx, ny = 22, 36
-    xbnds = np.linspace(311.91998291, 391.11999512, nx, endpoint=True)
-    ybnds = np.linspace(-23.59000015, 24.81000137, ny, endpoint=True)
-    x, y = np.meshgrid(xbnds, ybnds)
-    data = ((np.sin(np.deg2rad(x))) / 10. + np.exp(np.cos(np.deg2rad(y))))
-    data = data[:-1, :-1]
+    nx, ny=22, 36
+    xbnds=np.linspace(311.91998291, 391.11999512, nx, endpoint=True)
+    ybnds=np.linspace(-23.59000015, 24.81000137, ny, endpoint=True)
+    x, y=np.meshgrid(xbnds, ybnds)
+    data=((np.sin(np.deg2rad(x))) / 10. + np.exp(np.cos(np.deg2rad(y))))
+    data=data[:-1, :-1]
 
-    rp = ccrs.RotatedPole(pole_longitude=177.5, pole_latitude=37.5)
+    rp=ccrs.RotatedPole(pole_longitude=177.5, pole_latitude=37.5)
 
     plt.figure(figsize=(10, 6))
 
-    ax = plt.subplot(221, projection=ccrs.PlateCarree())
-<<<<<<< HEAD
+    ax=plt.subplot(221, projection=ccrs.PlateCarree())
+<< << << < HEAD
     plt.pcolormesh(xbnds, ybnds, data, transform=rp, cmap='Spectral',
                    snap=False)
     ax.coastlines()
 
-    ax = plt.subplot(222, projection=ccrs.PlateCarree(180))
+    ax=plt.subplot(222, projection=ccrs.PlateCarree(180))
     plt.pcolormesh(xbnds, ybnds, data, transform=rp, cmap='Spectral',
                    snap=False)
-=======
+== == == =
     plt.pcolormesh(xbnds, ybnds, data, transform=rp, cmap='Spectral')
     ax.coastlines()
 
-    ax = plt.subplot(222, projection=ccrs.PlateCarree(180))
+    ax=plt.subplot(222, projection=ccrs.PlateCarree(180))
     plt.pcolormesh(xbnds, ybnds, data, transform=rp, cmap='Spectral')
->>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
+>> >>>> > 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
     ax.set_global()
 
     # draw the same plot, only more zoomed in, and using the 2d versions
     # of the coordinates (just to test that 1d and 2d are both suitably
     # being fixed)
-    ax = plt.subplot(223, projection=ccrs.PlateCarree())
-<<<<<<< HEAD
+    ax=plt.subplot(223, projection=ccrs.PlateCarree())
+<< << << < HEAD
     plt.pcolormesh(x, y, data, transform=rp, cmap='Spectral',
                    snap=False)
-=======
+== == == =
     plt.pcolormesh(x, y, data, transform=rp, cmap='Spectral')
->>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
+>> >>>> > 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
     ax.set_extent([-70, 0, 0, 80])
 
-    ax = plt.subplot(224, projection=rp)
-<<<<<<< HEAD
+    ax=plt.subplot(224, projection=rp)
+<< << << < HEAD
     plt.pcolormesh(xbnds, ybnds, data, transform=rp, cmap='Spectral',
                    snap=False)
-=======
+== == == =
     plt.pcolormesh(xbnds, ybnds, data, transform=rp, cmap='Spectral')
->>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
+>> >>>> > 3249c3ff... test_mpl_integration module has been reinserted in this commit
     ax.coastlines()
 
 
-@pytest.mark.natural_earth
-@ImageTesting(['pcolormesh_single_column_wrap'], tolerance=0.7)
+@ pytest.mark.natural_earth
+@ ImageTesting(['pcolormesh_single_column_wrap'], tolerance=0.7)
 def test_pcolormesh_single_column_wrap():
     # Check a wrapped mesh like test_pcolormesh_limited_area_wrap, but only use
     # a single column, which could break depending on how wrapping is
     # determined.
-    ny = 36
-    xbnds = np.array([360.9485619, 364.71999105])
-    ybnds = np.linspace(-23.59000015, 24.81000137, ny, endpoint=True)
-    x, y = np.meshgrid(xbnds, ybnds)
-    data = ((np.sin(np.deg2rad(x))) / 10. + np.exp(np.cos(np.deg2rad(y))))
-    data = data[:-1, :-1]
+    ny=36
+    xbnds=np.array([360.9485619, 364.71999105])
+    ybnds=np.linspace(-23.59000015, 24.81000137, ny, endpoint=True)
+    x, y=np.meshgrid(xbnds, ybnds)
+    data=((np.sin(np.deg2rad(x))) / 10. + np.exp(np.cos(np.deg2rad(y))))
+    data=data[:-1, :-1]
 
-    rp = ccrs.RotatedPole(pole_longitude=177.5, pole_latitude=37.5)
+    rp=ccrs.RotatedPole(pole_longitude=177.5, pole_latitude=37.5)
 
     plt.figure(figsize=(10, 6))
 
-    ax = plt.subplot(111, projection=ccrs.PlateCarree(180))
+    ax=plt.subplot(111, projection=ccrs.PlateCarree(180))
     plt.pcolormesh(xbnds, ybnds, data, transform=rp, cmap='Spectral')
     ax.coastlines()
     ax.set_global()
@@ -691,209 +699,209 @@ def test_pcolormesh_single_column_wrap():
 def test_pcolormesh_diagonal_wrap():
     # Check that a cell with the top edge on one side of the domain
     # and the bottom edge on the other gets wrapped properly
-    xs = [[160, 170], [190, 200]]
-    ys = [[-10, -10], [10, 10]]
-    zs = [[0, 1], [0, 1]]
+    xs=[[160, 170], [190, 200]]
+    ys=[[-10, -10], [10, 10]]
+    zs=[[0, 1], [0, 1]]
 
-    ax = plt.axes(projection=ccrs.PlateCarree())
-    mesh = ax.pcolormesh(xs, ys, zs)
+    ax=plt.axes(projection=ccrs.PlateCarree())
+    mesh=ax.pcolormesh(xs, ys, zs)
 
     # And that the wrapped_collection is added
     assert hasattr(mesh, "_wrapped_collection_fix")
 
 
-@pytest.mark.natural_earth
-@ImageTesting(['pcolormesh_goode_wrap'])
+@ pytest.mark.natural_earth
+@ ImageTesting(['pcolormesh_goode_wrap'])
 def test_pcolormesh_goode_wrap():
     # global data on an Interrupted Goode Homolosine projection
     # shouldn't spill outside projection boundary
-    x = np.linspace(0, 360, 73)
-    y = np.linspace(-87.5, 87.5, 36)
-    X, Y = np.meshgrid(*[np.deg2rad(c) for c in (x, y)])
-    Z = np.cos(Y) + 0.375 * np.sin(2. * X)
-    Z = Z[:-1, :-1]
-    ax = plt.axes(projection=ccrs.InterruptedGoodeHomolosine())
+    x=np.linspace(0, 360, 73)
+    y=np.linspace(-87.5, 87.5, 36)
+    X, Y=np.meshgrid(*[np.deg2rad(c) for c in (x, y)])
+    Z=np.cos(Y) + 0.375 * np.sin(2. * X)
+    Z=Z[:-1, :-1]
+    ax=plt.axes(projection=ccrs.InterruptedGoodeHomolosine())
     ax.coastlines()
     ax.pcolormesh(x, y, Z, transform=ccrs.PlateCarree())
 
 
-@pytest.mark.natural_earth
-@ImageTesting(['pcolormesh_mercator_wrap'], tolerance=0.93)
+@ pytest.mark.natural_earth
+@ ImageTesting(['pcolormesh_mercator_wrap'], tolerance=0.93)
 def test_pcolormesh_mercator_wrap():
-    x = np.linspace(0, 360, 73)
-    y = np.linspace(-87.5, 87.5, 36)
-    X, Y = np.meshgrid(*[np.deg2rad(c) for c in (x, y)])
-    Z = np.cos(Y) + 0.375 * np.sin(2. * X)
-    Z = Z[:-1, :-1]
-    ax = plt.axes(projection=ccrs.Mercator())
+    x=np.linspace(0, 360, 73)
+    y=np.linspace(-87.5, 87.5, 36)
+    X, Y=np.meshgrid(*[np.deg2rad(c) for c in (x, y)])
+    Z=np.cos(Y) + 0.375 * np.sin(2. * X)
+    Z=Z[:-1, :-1]
+    ax=plt.axes(projection=ccrs.Mercator())
     ax.coastlines()
-<<<<<<< HEAD
+<< << << < HEAD
     ax.pcolormesh(x, y, Z, transform=ccrs.PlateCarree(), snap=False)
-=======
+== == == =
     ax.pcolormesh(x, y, Z, transform=ccrs.PlateCarree())
->>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
+>> >>>> > 3249c3ff... test_mpl_integration module has been reinserted in this commit
 
 
-@pytest.mark.natural_earth
-@ImageTesting(['pcolormesh_mercator_wrap'], tolerance=0.93)
+@ pytest.mark.natural_earth
+@ ImageTesting(['pcolormesh_mercator_wrap'], tolerance=0.93)
 def test_pcolormesh_wrap_set_array():
-    x = np.linspace(0, 360, 73)
-    y = np.linspace(-87.5, 87.5, 36)
-    X, Y = np.meshgrid(*[np.deg2rad(c) for c in (x, y)])
-    Z = np.cos(Y) + 0.375 * np.sin(2. * X)
-    Z = Z[:-1, :-1]
-    ax = plt.axes(projection=ccrs.Mercator())
-    norm = plt.Normalize(np.min(Z), np.max(Z))
+    x=np.linspace(0, 360, 73)
+    y=np.linspace(-87.5, 87.5, 36)
+    X, Y=np.meshgrid(*[np.deg2rad(c) for c in (x, y)])
+    Z=np.cos(Y) + 0.375 * np.sin(2. * X)
+    Z=Z[:-1, :-1]
+    ax=plt.axes(projection=ccrs.Mercator())
+    norm=plt.Normalize(np.min(Z), np.max(Z))
     ax.coastlines()
     # Start off with bad data
-    coll = ax.pcolormesh(x, y, np.ones(Z.shape), norm=norm,
-<<<<<<< HEAD
+    coll=ax.pcolormesh(x, y, np.ones(Z.shape), norm=norm,
+<< << << < HEAD
                          transform=ccrs.PlateCarree(), snap=False)
-=======
+== == == =
                          transform=ccrs.PlateCarree())
->>>>>>> 3249c3ff... test_mpl_integration module has been reinserted in this commit
+>> >>>> > 3249c3ff... test_mpl_integration module has been reinserted in this commit
     # Now update the plot with the set_array method
     coll.set_array(Z.ravel())
 
 
-@pytest.mark.natural_earth
-@ImageTesting(['quiver_plate_carree'])
+@ pytest.mark.natural_earth
+@ ImageTesting(['quiver_plate_carree'])
 def test_quiver_plate_carree():
-    x = np.arange(-60, 42.5, 2.5)
-    y = np.arange(30, 72.5, 2.5)
-    x2d, y2d = np.meshgrid(x, y)
-    u = np.cos(np.deg2rad(y2d))
-    v = np.cos(2. * np.deg2rad(x2d))
-    mag = (u**2 + v**2)**.5
-    plot_extent = [-60, 40, 30, 70]
+    x=np.arange(-60, 42.5, 2.5)
+    y=np.arange(30, 72.5, 2.5)
+    x2d, y2d=np.meshgrid(x, y)
+    u=np.cos(np.deg2rad(y2d))
+    v=np.cos(2. * np.deg2rad(x2d))
+    mag=(u**2 + v**2)**.5
+    plot_extent=[-60, 40, 30, 70]
     plt.figure(figsize=(6, 6))
     # plot on native projection
-    ax = plt.subplot(211, projection=ccrs.PlateCarree())
+    ax=plt.subplot(211, projection=ccrs.PlateCarree())
     ax.set_extent(plot_extent, crs=ccrs.PlateCarree())
     ax.coastlines(resolution="110m")
     ax.quiver(x, y, u, v, mag)
     # plot on a different projection
-    ax = plt.subplot(212, projection=ccrs.NorthPolarStereo())
+    ax=plt.subplot(212, projection=ccrs.NorthPolarStereo())
     ax.set_extent(plot_extent, crs=ccrs.PlateCarree())
     ax.coastlines()
     ax.quiver(x, y, u, v, mag, transform=ccrs.PlateCarree())
 
 
-@pytest.mark.natural_earth
-@ImageTesting(['quiver_rotated_pole'])
+@ pytest.mark.natural_earth
+@ ImageTesting(['quiver_rotated_pole'])
 def test_quiver_rotated_pole():
-    nx, ny = 22, 36
-    x = np.linspace(311.91998291, 391.11999512, nx, endpoint=True)
-    y = np.linspace(-23.59000015, 24.81000137, ny, endpoint=True)
-    x2d, y2d = np.meshgrid(x, y)
-    u = np.cos(np.deg2rad(y2d))
-    v = -2. * np.cos(2. * np.deg2rad(y2d)) * np.sin(np.deg2rad(x2d))
-    mag = (u**2 + v**2)**.5
-    rp = ccrs.RotatedPole(pole_longitude=177.5, pole_latitude=37.5)
-    plot_extent = [x[0], x[-1], y[0], y[-1]]
+    nx, ny=22, 36
+    x=np.linspace(311.91998291, 391.11999512, nx, endpoint=True)
+    y=np.linspace(-23.59000015, 24.81000137, ny, endpoint=True)
+    x2d, y2d=np.meshgrid(x, y)
+    u=np.cos(np.deg2rad(y2d))
+    v=-2. * np.cos(2. * np.deg2rad(y2d)) * np.sin(np.deg2rad(x2d))
+    mag=(u**2 + v**2)**.5
+    rp=ccrs.RotatedPole(pole_longitude=177.5, pole_latitude=37.5)
+    plot_extent=[x[0], x[-1], y[0], y[-1]]
     # plot on native projection
     plt.figure(figsize=(6, 6))
-    ax = plt.subplot(211, projection=rp)
+    ax=plt.subplot(211, projection=rp)
     ax.set_extent(plot_extent, crs=rp)
     ax.coastlines()
     ax.quiver(x, y, u, v, mag)
     # plot on different projection
-    ax = plt.subplot(212, projection=ccrs.PlateCarree())
+    ax=plt.subplot(212, projection=ccrs.PlateCarree())
     ax.set_extent(plot_extent, crs=rp)
     ax.coastlines()
     ax.quiver(x, y, u, v, mag, transform=rp)
 
 
-@pytest.mark.natural_earth
-@ImageTesting(['quiver_regrid'], tolerance=1.3)
+@ pytest.mark.natural_earth
+@ ImageTesting(['quiver_regrid'], tolerance=1.3)
 def test_quiver_regrid():
-    x = np.arange(-60, 42.5, 2.5)
-    y = np.arange(30, 72.5, 2.5)
-    x2d, y2d = np.meshgrid(x, y)
-    u = np.cos(np.deg2rad(y2d))
-    v = np.cos(2. * np.deg2rad(x2d))
-    mag = (u**2 + v**2)**.5
-    plot_extent = [-60, 40, 30, 70]
+    x=np.arange(-60, 42.5, 2.5)
+    y=np.arange(30, 72.5, 2.5)
+    x2d, y2d=np.meshgrid(x, y)
+    u=np.cos(np.deg2rad(y2d))
+    v=np.cos(2. * np.deg2rad(x2d))
+    mag=(u**2 + v**2)**.5
+    plot_extent=[-60, 40, 30, 70]
     plt.figure(figsize=(6, 3))
-    ax = plt.axes(projection=ccrs.NorthPolarStereo())
+    ax=plt.axes(projection=ccrs.NorthPolarStereo())
     ax.set_extent(plot_extent, crs=ccrs.PlateCarree())
     ax.coastlines()
     ax.quiver(x, y, u, v, mag, transform=ccrs.PlateCarree(),
               regrid_shape=30)
 
 
-@pytest.mark.natural_earth
-@ImageTesting(['quiver_regrid_with_extent'], tolerance=0.53)
+@ pytest.mark.natural_earth
+@ ImageTesting(['quiver_regrid_with_extent'], tolerance=0.53)
 def test_quiver_regrid_with_extent():
-    x = np.arange(-60, 42.5, 2.5)
-    y = np.arange(30, 72.5, 2.5)
-    x2d, y2d = np.meshgrid(x, y)
-    u = np.cos(np.deg2rad(y2d))
-    v = np.cos(2. * np.deg2rad(x2d))
-    mag = (u**2 + v**2)**.5
-    plot_extent = [-60, 40, 30, 70]
-    target_extent = [-3e6, 2e6, -6e6, -2.5e6]
+    x=np.arange(-60, 42.5, 2.5)
+    y=np.arange(30, 72.5, 2.5)
+    x2d, y2d=np.meshgrid(x, y)
+    u=np.cos(np.deg2rad(y2d))
+    v=np.cos(2. * np.deg2rad(x2d))
+    mag=(u**2 + v**2)**.5
+    plot_extent=[-60, 40, 30, 70]
+    target_extent=[-3e6, 2e6, -6e6, -2.5e6]
     plt.figure(figsize=(6, 3))
-    ax = plt.axes(projection=ccrs.NorthPolarStereo())
+    ax=plt.axes(projection=ccrs.NorthPolarStereo())
     ax.set_extent(plot_extent, crs=ccrs.PlateCarree())
     ax.coastlines()
     ax.quiver(x, y, u, v, mag, transform=ccrs.PlateCarree(),
               regrid_shape=10, target_extent=target_extent)
 
 
-@pytest.mark.natural_earth
-@ImageTesting(['barbs_plate_carree'])
+@ pytest.mark.natural_earth
+@ ImageTesting(['barbs_plate_carree'])
 def test_barbs():
-    x = np.arange(-60, 45, 5)
-    y = np.arange(30, 75, 5)
-    x2d, y2d = np.meshgrid(x, y)
-    u = 40 * np.cos(np.deg2rad(y2d))
-    v = 40 * np.cos(2. * np.deg2rad(x2d))
-    plot_extent = [-60, 40, 30, 70]
+    x=np.arange(-60, 45, 5)
+    y=np.arange(30, 75, 5)
+    x2d, y2d=np.meshgrid(x, y)
+    u=40 * np.cos(np.deg2rad(y2d))
+    v=40 * np.cos(2. * np.deg2rad(x2d))
+    plot_extent=[-60, 40, 30, 70]
     plt.figure(figsize=(6, 6))
     # plot on native projection
-    ax = plt.subplot(211, projection=ccrs.PlateCarree())
+    ax=plt.subplot(211, projection=ccrs.PlateCarree())
     ax.set_extent(plot_extent, crs=ccrs.PlateCarree())
     ax.coastlines(resolution="110m")
     ax.barbs(x, y, u, v, length=4, linewidth=.25)
     # plot on a different projection
-    ax = plt.subplot(212, projection=ccrs.NorthPolarStereo())
+    ax=plt.subplot(212, projection=ccrs.NorthPolarStereo())
     ax.set_extent(plot_extent, crs=ccrs.PlateCarree())
     ax.coastlines(resolution="110m")
     ax.barbs(x, y, u, v, transform=ccrs.PlateCarree(), length=4, linewidth=.25)
 
 
-@pytest.mark.natural_earth
-@ImageTesting(['barbs_regrid'])
+@ pytest.mark.natural_earth
+@ ImageTesting(['barbs_regrid'])
 def test_barbs_regrid():
-    x = np.arange(-60, 42.5, 2.5)
-    y = np.arange(30, 72.5, 2.5)
-    x2d, y2d = np.meshgrid(x, y)
-    u = 40 * np.cos(np.deg2rad(y2d))
-    v = 40 * np.cos(2. * np.deg2rad(x2d))
-    mag = (u**2 + v**2)**.5
-    plot_extent = [-60, 40, 30, 70]
+    x=np.arange(-60, 42.5, 2.5)
+    y=np.arange(30, 72.5, 2.5)
+    x2d, y2d=np.meshgrid(x, y)
+    u=40 * np.cos(np.deg2rad(y2d))
+    v=40 * np.cos(2. * np.deg2rad(x2d))
+    mag=(u**2 + v**2)**.5
+    plot_extent=[-60, 40, 30, 70]
     plt.figure(figsize=(6, 3))
-    ax = plt.axes(projection=ccrs.NorthPolarStereo())
+    ax=plt.axes(projection=ccrs.NorthPolarStereo())
     ax.set_extent(plot_extent, crs=ccrs.PlateCarree())
     ax.coastlines()
     ax.barbs(x, y, u, v, mag, transform=ccrs.PlateCarree(),
              length=4, linewidth=.4, regrid_shape=20)
 
 
-@pytest.mark.natural_earth
-@ImageTesting(['barbs_regrid_with_extent'], tolerance=0.54)
+@ pytest.mark.natural_earth
+@ ImageTesting(['barbs_regrid_with_extent'], tolerance=0.54)
 def test_barbs_regrid_with_extent():
-    x = np.arange(-60, 42.5, 2.5)
-    y = np.arange(30, 72.5, 2.5)
-    x2d, y2d = np.meshgrid(x, y)
-    u = 40 * np.cos(np.deg2rad(y2d))
-    v = 40 * np.cos(2. * np.deg2rad(x2d))
-    mag = (u**2 + v**2)**.5
-    plot_extent = [-60, 40, 30, 70]
-    target_extent = [-3e6, 2e6, -6e6, -2.5e6]
+    x=np.arange(-60, 42.5, 2.5)
+    y=np.arange(30, 72.5, 2.5)
+    x2d, y2d=np.meshgrid(x, y)
+    u=40 * np.cos(np.deg2rad(y2d))
+    v=40 * np.cos(2. * np.deg2rad(x2d))
+    mag=(u**2 + v**2)**.5
+    plot_extent=[-60, 40, 30, 70]
+    target_extent=[-3e6, 2e6, -6e6, -2.5e6]
     plt.figure(figsize=(6, 3))
-    ax = plt.axes(projection=ccrs.NorthPolarStereo())
+    ax=plt.axes(projection=ccrs.NorthPolarStereo())
     ax.set_extent(plot_extent, crs=ccrs.PlateCarree())
     ax.coastlines()
     ax.barbs(x, y, u, v, mag, transform=ccrs.PlateCarree(),
@@ -901,51 +909,51 @@ def test_barbs_regrid_with_extent():
              target_extent=target_extent)
 
 
-@pytest.mark.natural_earth
-@ImageTesting(['barbs_1d'])
+@ pytest.mark.natural_earth
+@ ImageTesting(['barbs_1d'])
 def test_barbs_1d():
-    x = np.array([20., 30., -17., 15.])
-    y = np.array([-1., 35., 11., 40.])
-    u = np.array([23., -18., 2., -11.])
-    v = np.array([5., -4., 19., 11.])
-    plot_extent = [-21, 40, -5, 45]
+    x=np.array([20., 30., -17., 15.])
+    y=np.array([-1., 35., 11., 40.])
+    u=np.array([23., -18., 2., -11.])
+    v=np.array([5., -4., 19., 11.])
+    plot_extent=[-21, 40, -5, 45]
     plt.figure(figsize=(6, 5))
-    ax = plt.axes(projection=ccrs.PlateCarree())
+    ax=plt.axes(projection=ccrs.PlateCarree())
     ax.set_extent(plot_extent, crs=ccrs.PlateCarree())
     ax.coastlines(resolution="110m")
     ax.barbs(x, y, u, v, transform=ccrs.PlateCarree(),
              length=8, linewidth=1, color='#7f7f7f')
 
 
-@pytest.mark.natural_earth
-@ImageTesting(['barbs_1d_transformed'])
+@ pytest.mark.natural_earth
+@ ImageTesting(['barbs_1d_transformed'])
 def test_barbs_1d_transformed():
-    x = np.array([20., 30., -17., 15.])
-    y = np.array([-1., 35., 11., 40.])
-    u = np.array([23., -18., 2., -11.])
-    v = np.array([5., -4., 19., 11.])
-    plot_extent = [-20, 31, -5, 45]
+    x=np.array([20., 30., -17., 15.])
+    y=np.array([-1., 35., 11., 40.])
+    u=np.array([23., -18., 2., -11.])
+    v=np.array([5., -4., 19., 11.])
+    plot_extent=[-20, 31, -5, 45]
     plt.figure(figsize=(6, 5))
-    ax = plt.axes(projection=ccrs.NorthPolarStereo())
+    ax=plt.axes(projection=ccrs.NorthPolarStereo())
     ax.set_extent(plot_extent, crs=ccrs.PlateCarree())
     ax.coastlines()
     ax.barbs(x, y, u, v, transform=ccrs.PlateCarree(),
              length=8, linewidth=1, color='#7f7f7f')
 
 
-@pytest.mark.natural_earth
-@ImageTesting([_STREAMPLOT_IMAGE], style=_STREAMPLOT_STYLE, tolerance=0.54)
+@ pytest.mark.natural_earth
+@ ImageTesting([_STREAMPLOT_IMAGE], style=_STREAMPLOT_STYLE, tolerance=0.54)
 def test_streamplot():
-    x = np.arange(-60, 42.5, 2.5)
-    y = np.arange(30, 72.5, 2.5)
-    x2d, y2d = np.meshgrid(x, y)
-    u = np.cos(np.deg2rad(y2d))
-    v = np.cos(2. * np.deg2rad(x2d))
-    mag = (u**2 + v**2)**.5
-    plot_extent = [-60, 40, 30, 70]
+    x=np.arange(-60, 42.5, 2.5)
+    y=np.arange(30, 72.5, 2.5)
+    x2d, y2d=np.meshgrid(x, y)
+    u=np.cos(np.deg2rad(y2d))
+    v=np.cos(2. * np.deg2rad(x2d))
+    mag=(u**2 + v**2)**.5
+    plot_extent=[-60, 40, 30, 70]
     plt.figure(figsize=(6, 3))
-    ax = plt.axes(projection=ccrs.NorthPolarStereo())
+    ax=plt.axes(projection=ccrs.NorthPolarStereo())
     ax.set_extent(plot_extent, crs=ccrs.PlateCarree())
     ax.coastlines()
     ax.streamplot(x, y, u, v, transform=ccrs.PlateCarree(),
-                  density=(1.5, 2), color=mag, linewidth=2*mag)
+                  density=(1.5, 2), color=mag, linewidth=2 * mag)

@@ -41,6 +41,8 @@ the package wouldn't be as rich or diverse as it is today:
  * Sadie Bartholomew
  * Kacper Makuch
  * Stephane Raynaud
+ * Philipe Riskalla Leal
+
 
 
 Thank you!

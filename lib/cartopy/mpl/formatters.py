@@ -17,6 +17,7 @@ class CardinalDirections():
     This class holds all cardination symbols
     applied in the gridline.
     """
+
     def __init__(self,
                  top_label_symbol='N',
                  bottom_label_symbol='S',

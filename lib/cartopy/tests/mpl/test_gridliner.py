@@ -113,7 +113,6 @@ def test_gridliner():
                         top=1 - delta, bottom=0 + delta)
 
 
-
 def test_gridliner_specified_lines():
     meridians = [0, 60, 120, 180, 240, 360]
     parallels = [-90, -60, -30, 0, 30, 60, 90]
@@ -401,7 +400,6 @@ def test_gridliner_line_limits():
         assert (np.max(path.vertices, axis=0) <= (xlim[1], ylim[1])).all()
 
 
-
 @pytest.mark.parametrize(
     "draw_labels, result",
     [
@@ -451,6 +449,7 @@ def test_gridliner_draw_labels_param(draw_labels, result):
     for loc in ['left', 'right', 'top', 'bottom']:
         artists = getattr(gl, loc+'_label_artists')
         res[loc] = [a.get_text() for a in artists if a.get_visible()]
+
 
 @pytest.mark.natural_earth
 @ImageTesting(['gridline_with_Max_ticknumbers'], tolerance=grid_label_tol)

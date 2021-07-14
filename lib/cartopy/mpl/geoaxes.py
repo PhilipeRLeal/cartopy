@@ -41,6 +41,7 @@ import cartopy.mpl.patch as cpatch
 from cartopy.mpl.slippy_image_artist import SlippyImageArtist
 from cartopy.vector_transform import vector_scalar_to_grid
 
+
 assert mpl.__version__ >= '1.5.1', ('Cartopy is only supported with '
                                     'Matplotlib 1.5.1 or greater.')
 
